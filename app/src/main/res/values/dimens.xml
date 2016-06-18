@@ -1,8 +1,14 @@
 <resources>
 
+    <dimen name="x_small">4dp</dimen>
     <dimen name="small">8dp</dimen>
+    <dimen name="medium">16dp</dimen>
+    <dimen name="large">24dp</dimen>
 
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="hero_list_horizontal_margin">@dimen/small</dimen>
+    <dimen name="hero_list_vertical_margin">@dimen/medium</dimen>
+
+    <dimen name="hero_card_height">200dp</dimen>
+    <dimen name="hero_card_corner_radius">@dimen/x_small</dimen>
+
 </resources>
