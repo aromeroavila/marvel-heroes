@@ -11,27 +11,27 @@ import static com.arao.marvelheroes.app.AppModule.resources;
 
 public class ViewModule {
 
-    public static HeroesListUi heroesListUi() {
-        return new HeroesListUi(heroesAdapter(),
+    public static ComicListUi comicListUi() {
+        return new ComicListUi(comicsAdapter(),
                 defaultItemAnimator(),
-                heroesItemDecoration(),
-                heroesLayoutManager());
+                comicItemDecoration(),
+                comicsLayoutManager());
     }
 
-    private static HeroesAdapter heroesAdapter() {
-        return new HeroesAdapter(viewHolderFactory(), picasso());
+    private static ComicsAdapter comicsAdapter() {
+        return new ComicsAdapter(viewHolderFactory(), picasso());
     }
 
     private static RecyclerView.ItemAnimator defaultItemAnimator() {
         return new DefaultItemAnimator();
     }
 
-    private static RecyclerView.ItemDecoration heroesItemDecoration() {
-        return new HeroesItemDecoration(resources());
+    private static RecyclerView.ItemDecoration comicItemDecoration() {
+        return new ComicItemDecoration(resources());
     }
 
-    private static RecyclerView.LayoutManager heroesLayoutManager() {
-        return new GridLayoutManager(appContext(), HeroesListUi.CARDS_PER_ROW);
+    private static RecyclerView.LayoutManager comicsLayoutManager() {
+        return new GridLayoutManager(appContext(), ComicListUi.CARDS_PER_ROW);
     }
 
     private static ViewHolderFactory viewHolderFactory() {

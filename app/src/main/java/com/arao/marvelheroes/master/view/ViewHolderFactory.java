@@ -4,8 +4,8 @@ import android.view.View;
 
 class ViewHolderFactory {
 
-    HeroesViewHolder createHeroesViewHolder(View view) {
-        return new HeroesViewHolder(view);
+    ComicViewHolder createComicViewHolder(View view) {
+        return new ComicViewHolder(view);
     }
 
 }

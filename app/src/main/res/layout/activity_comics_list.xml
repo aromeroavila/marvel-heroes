@@ -5,7 +5,7 @@
     android:id="@+id/activity_heroes_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.arao.marvelheroes.master.HeroesListActivity">
+    tools:context="com.arao.marvelheroes.master.ComicListActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -54,7 +54,7 @@
         android:visibility="gone" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/heroes_recycler"
+        android:id="@+id/comics_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/hero_list_vertical_margin"

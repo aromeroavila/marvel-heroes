@@ -1,6 +1,6 @@
 package com.arao.marvelheroes.net;
 
-import com.arao.marvelheroes.master.model.CharacterDataWrapper;
+import com.arao.marvelheroes.app.model.CharacterDataWrapper;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,9 +28,10 @@ class RetrofitApiService implements ApiService {
     }
 
     @Override
-    public void fetchCharacters(Callback<CharacterDataWrapper> callback) {
+    public void fetchComicsOfCharacter(String characterId, Callback<CharacterDataWrapper> callback) {
         MarvelEndpoints service = mRetrofit.create(MarvelEndpoints.class);
-        Call<CharacterDataWrapper> charactersCall = service.getCharacters(mAuthManager.getAuthParams());
+        Call<CharacterDataWrapper> charactersCall =
+                service.getCharacters(characterId, mAuthManager.getAuthParams());
         charactersCall.enqueue(callback);
     }
 

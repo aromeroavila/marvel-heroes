@@ -1,5 +1,5 @@
 
-package com.arao.marvelheroes.master.model;
+package com.arao.marvelheroes.app.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -13,22 +13,32 @@ public class Thumbnail {
     @Expose
     private String extension;
 
-    public String getExtension() {
-        return extension;
-    }
-
+    /**
+     * @return The path
+     */
     public String getPath() {
         return path;
     }
 
-    public Thumbnail withPath(String path) {
+    /**
+     * @param path The path
+     */
+    public void setPath(String path) {
         this.path = path;
-        return this;
     }
 
-    public Thumbnail withExtension(String extension) {
+    /**
+     * @return The extension
+     */
+    public String getExtension() {
+        return extension;
+    }
+
+    /**
+     * @param extension The extension
+     */
+    public void setExtension(String extension) {
         this.extension = extension;
-        return this;
     }
 
 }

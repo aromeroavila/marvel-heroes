@@ -7,11 +7,11 @@ import android.view.View;
 
 import com.arao.marvelheroes.R;
 
-class HeroesItemDecoration extends RecyclerView.ItemDecoration {
+class ComicItemDecoration extends RecyclerView.ItemDecoration {
 
     private Resources mResources;
 
-    HeroesItemDecoration(Resources resources) {
+    ComicItemDecoration(Resources resources) {
         mResources = resources;
     }
 

@@ -7,41 +7,41 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.arao.marvelheroes.R;
+import com.arao.marvelheroes.app.model.Comic;
 import com.arao.marvelheroes.app.presenter.ActivityPresenter;
-import com.arao.marvelheroes.master.HeroesListCallback;
-import com.arao.marvelheroes.master.model.Result;
+import com.arao.marvelheroes.master.ComicListCallback;
 
 import java.util.List;
 
-public class HeroesListUi {
+public class ComicListUi {
 
     static final int CARDS_PER_ROW = 2;
 
-    private final HeroesAdapter mHeroesAdapter;
+    private final ComicsAdapter mComicsAdapter;
     private final RecyclerView.ItemAnimator mItemAnimator;
     private final RecyclerView.ItemDecoration mItemDecoration;
     private final RecyclerView.LayoutManager mLayoutManager;
 
-    private RecyclerView mHeroesRecycler;
+    private RecyclerView mComicsRecycler;
     private LinearLayout mLoadingLayout;
     private TextView mErrorTextView;
-    private HeroesListCallback mCallback;
+    private ComicListCallback mCallback;
 
-    HeroesListUi(HeroesAdapter heroesAdapter,
-                 RecyclerView.ItemAnimator itemAnimator,
-                 RecyclerView.ItemDecoration itemDecoration,
-                 RecyclerView.LayoutManager layoutManager) {
-        mHeroesAdapter = heroesAdapter;
+    ComicListUi(ComicsAdapter comicsAdapter,
+                RecyclerView.ItemAnimator itemAnimator,
+                RecyclerView.ItemDecoration itemDecoration,
+                RecyclerView.LayoutManager layoutManager) {
+        mComicsAdapter = comicsAdapter;
         mItemAnimator = itemAnimator;
         mItemDecoration = itemDecoration;
         mLayoutManager = layoutManager;
     }
 
     public void createView(ActivityPresenter activityController) {
-        activityController.setContentView(R.layout.activity_heroes_list);
+        activityController.setContentView(R.layout.activity_comics_list);
 
         Toolbar toolbar = (Toolbar) activityController.findViewById(R.id.toolbar);
-        mHeroesRecycler = (RecyclerView) activityController.findViewById(R.id.heroes_recycler);
+        mComicsRecycler = (RecyclerView) activityController.findViewById(R.id.comics_recycler);
         mLoadingLayout = (LinearLayout) activityController.findViewById(R.id.loading_layout);
         mErrorTextView = (TextView) activityController.findViewById(R.id.error_view);
 
@@ -49,22 +49,25 @@ public class HeroesListUi {
         setupRecyclerView();
     }
 
-    public void setCallBack(HeroesListCallback callBack) {
+    public void setCallBack(ComicListCallback callBack) {
         mCallback = callBack;
     }
 
     public void setLoading(boolean loading) {
         mLoadingLayout.setVisibility(loading ? View.VISIBLE : View.GONE);
-        mHeroesRecycler.setVisibility(loading ? View.GONE : View.VISIBLE);
+        mComicsRecycler.setVisibility(loading ? View.GONE : View.VISIBLE);
     }
 
     public void showError(boolean error) {
         mErrorTextView.setVisibility(error ? View.VISIBLE : View.GONE);
-        mHeroesRecycler.setVisibility(error ? View.GONE : View.VISIBLE);
+        mComicsRecycler.setVisibility(error ? View.GONE : View.VISIBLE);
     }
 
-    public void setHeroes(List<Result> heroList) {
-        mHeroesAdapter.setData(heroList);
+    public void setComics(List<Comic> comics) {
+        mErrorTextView.setVisibility(View.GONE);
+        mLoadingLayout.setVisibility(View.GONE);
+        mComicsRecycler.setVisibility(View.VISIBLE);
+        mComicsAdapter.setData(comics);
     }
 
     private void initToolbar(Toolbar toolbar) {
@@ -72,10 +75,10 @@ public class HeroesListUi {
     }
 
     private void setupRecyclerView() {
-        mHeroesAdapter.setPresenterCallback(mCallback);
-        mHeroesRecycler.setLayoutManager(mLayoutManager);
-        mHeroesRecycler.setItemAnimator(mItemAnimator);
-        mHeroesRecycler.addItemDecoration(mItemDecoration);
-        mHeroesRecycler.setAdapter(mHeroesAdapter);
+        mComicsAdapter.setPresenterCallback(mCallback);
+        mComicsRecycler.setLayoutManager(mLayoutManager);
+        mComicsRecycler.setItemAnimator(mItemAnimator);
+        mComicsRecycler.addItemDecoration(mItemDecoration);
+        mComicsRecycler.setAdapter(mComicsAdapter);
     }
 }

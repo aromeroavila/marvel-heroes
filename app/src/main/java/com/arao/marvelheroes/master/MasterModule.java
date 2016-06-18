@@ -4,8 +4,8 @@ import static com.arao.marvelheroes.net.NetModule.apiService;
 
 class MasterModule {
 
-    static HeroesListPresenter heroesListPresenter() {
-        return new HeroesListPresenter(apiService());
+    static ComicListPresenter comicListPresenter() {
+        return new ComicListPresenter(apiService());
     }
 
 }
