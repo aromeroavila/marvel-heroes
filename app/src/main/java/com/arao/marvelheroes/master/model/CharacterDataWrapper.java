@@ -26,7 +26,11 @@ public class CharacterDataWrapper {
     private String etag;
     @SerializedName("data")
     @Expose
-    public Data data;
+    private Data data;
+
+    public Data getData() {
+        return data;
+    }
 
     public CharacterDataWrapper withCode(Integer code) {
         this.code = code;

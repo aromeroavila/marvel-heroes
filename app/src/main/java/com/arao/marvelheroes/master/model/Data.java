@@ -25,6 +25,10 @@ public class Data {
     @Expose
     private List<Result> results = new ArrayList<Result>();
 
+    public List<Result> getResults() {
+        return results;
+    }
+
     public Data withOffset(Integer offset) {
         this.offset = offset;
         return this;

@@ -43,6 +43,50 @@ public class Result {
     @Expose
     private List<Url> urls = new ArrayList<Url>();
 
+    public Comics getComics() {
+        return comics;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Events getEvents() {
+        return events;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getModified() {
+        return modified;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getResourceURI() {
+        return resourceURI;
+    }
+
+    public Series getSeries() {
+        return series;
+    }
+
+    public Stories getStories() {
+        return stories;
+    }
+
+    public Thumbnail getThumbnail() {
+        return thumbnail;
+    }
+
+    public List<Url> getUrls() {
+        return urls;
+    }
+
     public Result withId(Integer id) {
         this.id = id;
         return this;

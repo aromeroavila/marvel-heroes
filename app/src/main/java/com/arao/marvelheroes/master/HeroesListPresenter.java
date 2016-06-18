@@ -13,8 +13,14 @@ class HeroesListPresenter implements Callback<CharacterDataWrapper> {
 
     private final ApiService mRetrofitApiService;
 
+    private HeroesListCallback mCallback;
+
     HeroesListPresenter(ApiService retrofitApiService) {
         mRetrofitApiService = retrofitApiService;
+    }
+
+    void setCallBack(HeroesListCallback callback) {
+        mCallback = callback;
     }
 
     void fetchCharacters() {
@@ -23,6 +29,11 @@ class HeroesListPresenter implements Callback<CharacterDataWrapper> {
 
     @Override
     public void onResponse(Call<CharacterDataWrapper> call, Response<CharacterDataWrapper> response) {
+        if (response.isSuccessful()) {
+            mCallback.onHeroesReceived(response.body());
+        } else {
+            Log.d("net", "error on the response");
+        }
         Log.d("net", "onResponse");
     }
 

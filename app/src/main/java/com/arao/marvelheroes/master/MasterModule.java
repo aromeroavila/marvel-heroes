@@ -8,8 +8,4 @@ class MasterModule {
         return new HeroesListPresenter(apiService());
     }
 
-    static HeroesListUi heroesListUi() {
-        return new HeroesListUi();
-    }
-
 }
