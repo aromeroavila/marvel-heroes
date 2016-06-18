@@ -16,13 +16,17 @@
         <TextView
             android:id="@+id/hero_name"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/title_font"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/hero_image"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="@dimen/x_small"
             android:layout_weight="1"
+            android:scaleType="centerCrop"
             tools:ignore="ContentDescription" />
 
     </LinearLayout>

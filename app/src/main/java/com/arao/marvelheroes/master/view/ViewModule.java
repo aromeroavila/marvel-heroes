@@ -4,6 +4,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import static com.arao.marvelheroes.app.AppModule.appContext;
 import static com.arao.marvelheroes.app.AppModule.resources;
 
@@ -17,7 +19,7 @@ public class ViewModule {
     }
 
     private static HeroesAdapter heroesAdapter() {
-        return new HeroesAdapter(viewHolderFactory());
+        return new HeroesAdapter(viewHolderFactory(), picasso());
     }
 
     private static RecyclerView.ItemAnimator defaultItemAnimator() {
@@ -34,6 +36,10 @@ public class ViewModule {
 
     private static ViewHolderFactory viewHolderFactory() {
         return new ViewHolderFactory();
+    }
+
+    private static Picasso picasso() {
+        return Picasso.with(appContext());
     }
 
 }

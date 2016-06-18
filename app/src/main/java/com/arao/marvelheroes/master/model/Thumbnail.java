@@ -13,6 +13,14 @@ public class Thumbnail {
     @Expose
     private String extension;
 
+    public String getExtension() {
+        return extension;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
     public Thumbnail withPath(String path) {
         this.path = path;
         return this;
