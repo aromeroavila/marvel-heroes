@@ -5,6 +5,7 @@
     android:id="@+id/hero_card_view"
     android:layout_width="match_parent"
     android:layout_height="@dimen/hero_card_height"
+    android:clickable="true"
     card_view:cardCornerRadius="@dimen/hero_card_corner_radius">
 
     <LinearLayout

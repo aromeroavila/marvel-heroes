@@ -1,7 +1,5 @@
 package com.arao.marvelheroes.master;
 
-import android.util.Log;
-
 import com.arao.marvelheroes.master.model.CharacterDataWrapper;
 import com.arao.marvelheroes.net.ApiService;
 
@@ -32,13 +30,12 @@ class HeroesListPresenter implements Callback<CharacterDataWrapper> {
         if (response.isSuccessful()) {
             mCallback.onHeroesReceived(response.body());
         } else {
-            Log.d("net", "error on the response");
+            mCallback.onErrorFetchingHeroes();
         }
-        Log.d("net", "onResponse");
     }
 
     @Override
     public void onFailure(Call<CharacterDataWrapper> call, Throwable t) {
-        Log.d("net", "onFailure");
+        mCallback.onErrorFetchingHeroes();
     }
 }

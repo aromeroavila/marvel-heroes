@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.arao.marvelheroes.R;
+import com.arao.marvelheroes.master.HeroesListCallback;
 import com.arao.marvelheroes.master.model.Result;
 import com.squareup.picasso.Picasso;
 
@@ -13,15 +14,21 @@ import java.util.List;
 
 class HeroesAdapter extends RecyclerView.Adapter<HeroesViewHolder> {
 
-    public static final String EXTENSION_DOT = ".";
+    private static final String EXTENSION_DOT = ".";
+
     private final ViewHolderFactory mViewHolderFactory;
     private final Picasso mPicasso;
 
     private List<Result> mHeroesList;
+    private HeroesListCallback mHeroesListCallback;
 
     HeroesAdapter(ViewHolderFactory viewHolderFactory, Picasso picasso) {
         mViewHolderFactory = viewHolderFactory;
         mPicasso = picasso;
+    }
+
+    void setPresenterCallback(HeroesListCallback heroesListCallback) {
+        mHeroesListCallback = heroesListCallback;
     }
 
     public void setData(List<Result> heroesList) {
@@ -34,7 +41,17 @@ class HeroesAdapter extends RecyclerView.Adapter<HeroesViewHolder> {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.heroes_list_item, parent, false);
 
-        return mViewHolderFactory.createHeroesViewHolder(itemView);
+        final HeroesViewHolder viewHolder = mViewHolderFactory.createHeroesViewHolder(itemView);
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Result hero = mHeroesList.get(viewHolder.getAdapterPosition());
+                mHeroesListCallback.onHeroClicked(hero);
+            }
+        });
+
+        return viewHolder;
     }
 
     @Override
