@@ -3,7 +3,7 @@ package com.arao.marvelheroes.net;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.arao.marvelheroes.app.utils.UtilsModule.encryptionManager;
+import static com.arao.marvelheroes.utils.UtilsModule.encryptionManager;
 
 public class NetModule {
 

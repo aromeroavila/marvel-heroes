@@ -1,6 +1,6 @@
 package com.arao.marvelheroes.net;
 
-import com.arao.marvelheroes.app.utils.EncryptionManager;
+import com.arao.marvelheroes.utils.EncryptionManager;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;

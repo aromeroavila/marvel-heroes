@@ -1,4 +1,4 @@
-package com.arao.marvelheroes.app.utils;
+package com.arao.marvelheroes.utils;
 
 public class UtilsModule {
 
