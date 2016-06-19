@@ -10,6 +10,7 @@ public class ActivityLauncher {
 
     public void launchComicActivity(Activity sourceActivity, Comic comic) {
         Intent comicIntent = new Intent(sourceActivity, ComicActivity.class);
+        comicIntent.putExtra(ComicActivity.COMIC_EXTRA, comic);
         sourceActivity.startActivity(comicIntent);
     }
 

@@ -4,4 +4,6 @@
     <string name="loading_message">Loading heroes…</string>
     <string name="error_message">There was a problem fetching the data, please try again.</string>
 
+    <string name="comic_title">Comic</string>
+
 </resources>

@@ -18,6 +18,10 @@ public class ViewModule {
                 comicsLayoutManager());
     }
 
+    public static Picasso picasso() {
+        return Picasso.with(appContext());
+    }
+
     private static ComicsAdapter comicsAdapter() {
         return new ComicsAdapter(viewHolderFactory(), picasso());
     }
@@ -36,10 +40,6 @@ public class ViewModule {
 
     private static ViewHolderFactory viewHolderFactory() {
         return new ViewHolderFactory();
-    }
-
-    private static Picasso picasso() {
-        return Picasso.with(appContext());
     }
 
 }
