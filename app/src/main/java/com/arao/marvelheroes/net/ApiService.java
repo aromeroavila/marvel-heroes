@@ -6,6 +6,6 @@ import retrofit2.Callback;
 
 public interface ApiService {
 
-    void fetchComicsOfCharacter(String characterId, Callback<CharacterDataWrapper> callback);
+    void fetchComicsFromCharacter(String characterId, Callback<CharacterDataWrapper> callback);
 
 }

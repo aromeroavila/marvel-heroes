@@ -58,14 +58,14 @@ public class ComicListPresenterTest {
     public void whenInitWithNullData_thenComicsAreFetched() throws Exception {
         comicListPresenter.init(comicListUi, dataPersistor, null);
 
-        verify(apiService).fetchComicsOfCharacter("1009220", comicListPresenter);
+        verify(apiService).fetchComicsFromCharacter("1009220", comicListPresenter);
     }
 
     @Test
     public void whenInitWithData_thenComicsAreFetched() throws Exception {
         comicListPresenter.init(comicListUi, dataPersistor, comics);
 
-        verify(apiService, never()).fetchComicsOfCharacter("1009220", comicListPresenter);
+        verify(apiService, never()).fetchComicsFromCharacter("1009220", comicListPresenter);
         verify(comicListUi).setComics(comics);
     }
 

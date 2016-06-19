@@ -11,11 +11,11 @@ public class NetModule {
         return RetrofitApiService.getApiService(retrofit(), authManager());
     }
 
-    static AuthManager authManager() {
+    private static AuthManager authManager() {
         return new AuthManager(encryptionManager());
     }
 
-    static Retrofit retrofit() {
+    private static Retrofit retrofit() {
         return new Retrofit.Builder()
                 .baseUrl(RetrofitApiService.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())

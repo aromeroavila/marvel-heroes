@@ -28,7 +28,7 @@ class RetrofitApiService implements ApiService {
     }
 
     @Override
-    public void fetchComicsOfCharacter(String characterId, Callback<CharacterDataWrapper> callback) {
+    public void fetchComicsFromCharacter(String characterId, Callback<CharacterDataWrapper> callback) {
         MarvelEndpoints service = mRetrofit.create(MarvelEndpoints.class);
         Call<CharacterDataWrapper> charactersCall =
                 service.getCharacters(characterId, mAuthManager.getAuthParams());

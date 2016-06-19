@@ -38,7 +38,7 @@ class ComicListPresenter implements Callback<CharacterDataWrapper> {
     }
 
     private void fetchComics() {
-        mRetrofitApiService.fetchComicsOfCharacter(CAPTAIN_AMERICA_ID, this);
+        mRetrofitApiService.fetchComicsFromCharacter(CAPTAIN_AMERICA_ID, this);
     }
 
     @Override
