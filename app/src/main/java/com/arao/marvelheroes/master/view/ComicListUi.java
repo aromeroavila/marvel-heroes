@@ -37,8 +37,9 @@ public class ComicListUi {
         mLayoutManager = layoutManager;
     }
 
-    public void createView(ActivityPresenter activityController) {
+    public void createView(ActivityPresenter activityController, ComicListCallback callBack) {
         activityController.setContentView(R.layout.activity_comics_list);
+        mCallback = callBack;
 
         Toolbar toolbar = (Toolbar) activityController.findViewById(R.id.toolbar);
         mComicsRecycler = (RecyclerView) activityController.findViewById(R.id.comics_recycler);
@@ -47,10 +48,6 @@ public class ComicListUi {
 
         initToolbar(toolbar);
         setupRecyclerView();
-    }
-
-    public void setCallBack(ComicListCallback callBack) {
-        mCallback = callBack;
     }
 
     public void setLoading(boolean loading) {

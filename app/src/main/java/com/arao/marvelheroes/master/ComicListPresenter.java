@@ -1,6 +1,8 @@
 package com.arao.marvelheroes.master;
 
 import com.arao.marvelheroes.app.model.CharacterDataWrapper;
+import com.arao.marvelheroes.app.model.ComicDataContainer;
+import com.arao.marvelheroes.master.view.ComicListUi;
 import com.arao.marvelheroes.net.ApiService;
 
 import retrofit2.Call;
@@ -13,31 +15,46 @@ class ComicListPresenter implements Callback<CharacterDataWrapper> {
 
     private final ApiService mRetrofitApiService;
 
-    private ComicListCallback mCallback;
+    private ComicListUi mComicListUi;
 
     ComicListPresenter(ApiService retrofitApiService) {
         mRetrofitApiService = retrofitApiService;
     }
 
-    void setCallBack(ComicListCallback callback) {
-        mCallback = callback;
+    void init(ComicListUi comicListUi) {
+        mComicListUi = comicListUi;
+        fetchComics();
     }
 
-    void fetchComics() {
+    private void fetchComics() {
         mRetrofitApiService.fetchComicsOfCharacter(CAPTAIN_AMERICA_ID, this);
     }
 
     @Override
     public void onResponse(Call<CharacterDataWrapper> call, Response<CharacterDataWrapper> response) {
         if (response.isSuccessful()) {
-            mCallback.onComicsReceived(response.body());
+            onComicsReceived(response.body());
         } else {
-            mCallback.onErrorFetchingComics();
+            displayError();
         }
     }
 
     @Override
     public void onFailure(Call<CharacterDataWrapper> call, Throwable t) {
-        mCallback.onErrorFetchingComics();
+        displayError();
+    }
+
+    private void onComicsReceived(CharacterDataWrapper characterDataWrapper) {
+        ComicDataContainer data = characterDataWrapper.getComicDataContainer();
+        if (data != null && data.getComics() != null) {
+            mComicListUi.setComics(data.getComics());
+        } else {
+            displayError();
+        }
+    }
+
+    private void displayError() {
+        mComicListUi.setLoading(false);
+        mComicListUi.showError(true);
     }
 }
