@@ -52,10 +52,12 @@ public class ComicListUi {
 
     public void setLoading(boolean loading) {
         mLoadingLayout.setVisibility(loading ? View.VISIBLE : View.GONE);
+        mErrorTextView.setVisibility(loading ? View.GONE : View.VISIBLE);
         mComicsRecycler.setVisibility(loading ? View.GONE : View.VISIBLE);
     }
 
     public void showError(boolean error) {
+        mLoadingLayout.setVisibility(error ? View.GONE : View.VISIBLE);
         mErrorTextView.setVisibility(error ? View.VISIBLE : View.GONE);
         mComicsRecycler.setVisibility(error ? View.GONE : View.VISIBLE);
     }

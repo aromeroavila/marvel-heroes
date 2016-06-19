@@ -46,6 +46,12 @@ class ComicUi implements View.OnClickListener {
         mNavigationCallback.onUpPressed();
     }
 
+    private void initToolbar() {
+        mToolbar.setTitle(R.string.comic_title);
+        mToolbar.setNavigationIcon(R.drawable.ic_up);
+        mToolbar.setNavigationOnClickListener(this);
+    }
+
     private void setData(Comic comic) {
         Image image = comic.getImages().get(0);
         mComicTitle.setText(comic.getTitle());
@@ -53,12 +59,6 @@ class ComicUi implements View.OnClickListener {
         mPicasso.load(image.getPath() + EXTENSION_DOT + image.getExtension())
                 .placeholder(R.mipmap.comics_list_placeholder)
                 .into(mComicImage);
-    }
-
-    private void initToolbar() {
-        mToolbar.setTitle(R.string.comic_title);
-        mToolbar.setNavigationIcon(R.drawable.ic_up);
-        mToolbar.setNavigationOnClickListener(this);
     }
 
 }

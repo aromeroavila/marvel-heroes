@@ -54,7 +54,6 @@ class ComicListPresenter implements Callback<CharacterDataWrapper> {
     }
 
     private void displayError() {
-        mComicListUi.setLoading(false);
         mComicListUi.showError(true);
     }
 }
