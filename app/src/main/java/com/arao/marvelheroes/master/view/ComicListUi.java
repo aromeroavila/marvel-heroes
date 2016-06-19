@@ -50,16 +50,16 @@ public class ComicListUi {
         setupRecyclerView();
     }
 
-    public void setLoading(boolean loading) {
-        mLoadingLayout.setVisibility(loading ? View.VISIBLE : View.GONE);
-        mErrorTextView.setVisibility(loading ? View.GONE : View.VISIBLE);
-        mComicsRecycler.setVisibility(loading ? View.GONE : View.VISIBLE);
+    public void setLoading() {
+        mLoadingLayout.setVisibility(View.VISIBLE);
+        mErrorTextView.setVisibility(View.GONE);
+        mComicsRecycler.setVisibility(View.GONE);
     }
 
-    public void showError(boolean error) {
-        mLoadingLayout.setVisibility(error ? View.GONE : View.VISIBLE);
-        mErrorTextView.setVisibility(error ? View.VISIBLE : View.GONE);
-        mComicsRecycler.setVisibility(error ? View.GONE : View.VISIBLE);
+    public void showError() {
+        mLoadingLayout.setVisibility(View.GONE);
+        mErrorTextView.setVisibility(View.VISIBLE);
+        mComicsRecycler.setVisibility(View.GONE);
     }
 
     public void setComics(List<Comic> comics) {

@@ -46,13 +46,13 @@ class ComicListPresenter implements Callback<CharacterDataWrapper> {
         if (response.isSuccessful()) {
             onComicsReceived(response.body());
         } else {
-            displayError();
+            mComicListUi.showError();
         }
     }
 
     @Override
     public void onFailure(Call<CharacterDataWrapper> call, Throwable t) {
-        displayError();
+        mComicListUi.showError();
     }
 
     private void onComicsReceived(CharacterDataWrapper characterDataWrapper) {
@@ -62,15 +62,11 @@ class ComicListPresenter implements Callback<CharacterDataWrapper> {
             mDataPersistor.persistData(comics);
             setData(comics);
         } else {
-            displayError();
+            mComicListUi.showError();
         }
     }
 
     private void setData(List<Comic> comics) {
         mComicListUi.setComics(comics);
-    }
-
-    private void displayError() {
-        mComicListUi.showError(true);
     }
 }

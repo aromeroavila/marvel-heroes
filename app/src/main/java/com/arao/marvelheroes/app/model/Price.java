@@ -16,34 +16,6 @@ public class Price implements Parcelable {
     @Expose
     private Float price;
 
-    /**
-     * @return The type
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * @param type The type
-     */
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    /**
-     * @return The price
-     */
-    public Float getPrice() {
-        return price;
-    }
-
-    /**
-     * @param price The price
-     */
-    public void setPrice(Float price) {
-        this.price = price;
-    }
-
     @Override
     public int describeContents() {
         return 0;

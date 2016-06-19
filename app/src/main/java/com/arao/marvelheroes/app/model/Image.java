@@ -24,24 +24,10 @@ public class Image implements Parcelable {
     }
 
     /**
-     * @param path The path
-     */
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    /**
      * @return The extension
      */
     public String getExtension() {
         return extension;
-    }
-
-    /**
-     * @param extension The extension
-     */
-    public void setExtension(String extension) {
-        this.extension = extension;
     }
 
     @Override

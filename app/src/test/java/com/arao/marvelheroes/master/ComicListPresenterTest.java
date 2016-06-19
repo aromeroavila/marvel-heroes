@@ -88,7 +88,7 @@ public class ComicListPresenterTest {
 
         comicListPresenter.onFailure(call, throwable);
 
-        verify(comicListUi).showError(true);
+        verify(comicListUi).showError();
     }
 
 }
