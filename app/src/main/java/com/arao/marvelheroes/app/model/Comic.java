@@ -1,13 +1,16 @@
 
 package com.arao.marvelheroes.app.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Comic {
+public class Comic implements Parcelable {
 
     @SerializedName("id")
     @Expose
@@ -503,4 +506,96 @@ public class Comic {
         this.events = events;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.id);
+        dest.writeValue(this.digitalId);
+        dest.writeString(this.title);
+        dest.writeValue(this.issueNumber);
+        dest.writeString(this.variantDescription);
+        dest.writeString(this.description);
+        dest.writeString(this.modified);
+        dest.writeString(this.isbn);
+        dest.writeString(this.upc);
+        dest.writeString(this.diamondCode);
+        dest.writeString(this.ean);
+        dest.writeString(this.issn);
+        dest.writeString(this.format);
+        dest.writeValue(this.pageCount);
+        dest.writeList(this.textObjects);
+        dest.writeString(this.resourceURI);
+        dest.writeList(this.urls);
+        dest.writeParcelable(this.series, flags);
+        dest.writeList(this.variants);
+        dest.writeList(this.collections);
+        dest.writeList(this.collectedIssues);
+        dest.writeList(this.dates);
+        dest.writeList(this.prices);
+        dest.writeParcelable(this.thumbnail, flags);
+        dest.writeList(this.images);
+        dest.writeParcelable(this.creators, flags);
+        dest.writeParcelable(this.characters, flags);
+        dest.writeParcelable(this.stories, flags);
+        dest.writeParcelable(this.events, flags);
+    }
+
+    public Comic() {
+    }
+
+    protected Comic(Parcel in) {
+        this.id = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.digitalId = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.title = in.readString();
+        this.issueNumber = (Double) in.readValue(Double.class.getClassLoader());
+        this.variantDescription = in.readString();
+        this.description = in.readString();
+        this.modified = in.readString();
+        this.isbn = in.readString();
+        this.upc = in.readString();
+        this.diamondCode = in.readString();
+        this.ean = in.readString();
+        this.issn = in.readString();
+        this.format = in.readString();
+        this.pageCount = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.textObjects = new ArrayList<TextObject>();
+        in.readList(this.textObjects, TextObject.class.getClassLoader());
+        this.resourceURI = in.readString();
+        this.urls = new ArrayList<Url>();
+        in.readList(this.urls, Url.class.getClassLoader());
+        this.series = in.readParcelable(Series.class.getClassLoader());
+        this.variants = new ArrayList<Object>();
+        in.readList(this.variants, Object.class.getClassLoader());
+        this.collections = new ArrayList<Object>();
+        in.readList(this.collections, Object.class.getClassLoader());
+        this.collectedIssues = new ArrayList<Object>();
+        in.readList(this.collectedIssues, Object.class.getClassLoader());
+        this.dates = new ArrayList<Date>();
+        in.readList(this.dates, Date.class.getClassLoader());
+        this.prices = new ArrayList<Price>();
+        in.readList(this.prices, Price.class.getClassLoader());
+        this.thumbnail = in.readParcelable(Thumbnail.class.getClassLoader());
+        this.images = new ArrayList<Image>();
+        in.readList(this.images, Image.class.getClassLoader());
+        this.creators = in.readParcelable(Creators.class.getClassLoader());
+        this.characters = in.readParcelable(Characters.class.getClassLoader());
+        this.stories = in.readParcelable(Stories.class.getClassLoader());
+        this.events = in.readParcelable(Events.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<Comic> CREATOR = new Parcelable.Creator<Comic>() {
+        @Override
+        public Comic createFromParcel(Parcel source) {
+            return new Comic(source);
+        }
+
+        @Override
+        public Comic[] newArray(int size) {
+            return new Comic[size];
+        }
+    };
 }
